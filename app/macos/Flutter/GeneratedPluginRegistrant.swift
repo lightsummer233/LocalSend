@@ -9,7 +9,7 @@ import bitsdojo_window_macos
 import connectivity_plus
 import desktop_drop
 import device_info_plus
-import dynamic_color
+import dynamic_system_colors
 import file_picker
 import file_selector_macos
 import gal

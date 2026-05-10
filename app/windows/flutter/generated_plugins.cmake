@@ -6,7 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   bitsdojo_window_windows
   connectivity_plus
   desktop_drop
-  dynamic_color
+  dynamic_system_colors
   file_selector_windows
   gal
   open_dir_windows

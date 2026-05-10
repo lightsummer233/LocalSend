@@ -21,7 +21,7 @@ dependencies:
   desktop_drop: ^0.7.1
   device_apps: 2.2.0
   device_info_plus: ^12.4.0
-  dynamic_color: 1.8.1
+  dynamic_system_colors: ^1.8.0
   file_picker: ^11.0.2
   file_selector: ^1.1.0
   flutter:
