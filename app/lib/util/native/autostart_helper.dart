@@ -37,9 +37,8 @@ Terminal=false
         return true;
       case TargetPlatform.windows:
         _getWindowsRegistryKey().createValue(
-          RegistryValue(
+          RegistryValue.string(
             _windowsRegistryKeyValue,
-            RegistryValueType.string,
             '"${Platform.resolvedExecutable}"${startHidden ? ' $startHiddenFlag' : ''}',
           ),
         );

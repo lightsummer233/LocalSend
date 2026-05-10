@@ -12,6 +12,7 @@ import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
+import androidx.core.net.toUri
 
 
 private const val CHANNEL = "org.localsend.localsend_app/localsend"
@@ -78,8 +79,8 @@ class MainActivity : FlutterActivity() {
     }
 
     private fun isAnimationsEnabled() : Boolean {
-        return Settings.Global.getFloat(this.getContentResolver(),
-            Settings.Global.ANIMATOR_DURATION_SCALE, 1.0f) != 0.0f;
+        return Settings.Global.getFloat(this.contentResolver,
+            Settings.Global.ANIMATOR_DURATION_SCALE, 1.0f) != 0.0f
     }
 
     private fun openDirectoryPicker(onlyPath: Boolean) {
@@ -218,7 +219,7 @@ class MainActivity : FlutterActivity() {
 
     @SuppressLint("WrongConstant")
     private fun handleCreateDirectory(call: MethodCall, result: MethodChannel.Result) {
-        val documentUri = Uri.parse(call.argument<String>("documentUri")!!)
+        val documentUri = call.argument<String>("documentUri")!!.toUri()
         val directoryName = call.argument<String>("directoryName")!!
 
         if (folderExists(documentUri, directoryName)) {

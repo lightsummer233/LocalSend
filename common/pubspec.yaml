@@ -11,11 +11,11 @@ dependencies:
   dart_mappable: ^4.2.0
   logging: ^1.2.0
   meta: ^1.9.1
-  mime: ^1.0.4
+  mime: ^2.0.0
   refena: ^3.1.0
 
 dev_dependencies:
   build_runner: ^2.4.7
   dart_mappable_builder: ^4.2.0
-  lints: ^2.0.0
+  lints: ^6.1.0
   test: ^1.21.0

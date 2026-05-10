@@ -8,22 +8,19 @@ import android.graphics.drawable.Icon
 import android.os.Build
 import android.service.quicksettings.TileService
 import android.util.Log
-import androidx.annotation.RequiresApi
 
 /**
  * Service used to launch the app as a quick tile from the top/status bar
  * @see https://dev.to/djsmk123/fluttercreate-custom-quick-title-android-only-3ehp
  * @see https://github.com/ProtonVPN/android-app/blob/2290b3c6b8b5ded339d69ec7c12e15acbb4b4b3d/app/src/main/java/com/protonvpn/android/components/QuickTileService.kt#L171
  */
-@RequiresApi(Build.VERSION_CODES.N)
 class QuickTileService : TileService() {
+
     override fun onClick() {
         super.onClick()
 
         launchApp()
     }
-
-
 
     override fun onStartListening() {
         super.onStartListening()
@@ -65,6 +62,7 @@ class QuickTileService : TileService() {
             } else {
                 // For any version below `Build.VERSION_CODES.UPSIDE_DOWN_CAKE`
                 // we can simply start the intent directly.
+                @Suppress("DEPRECATION")
                 startActivityAndCollapse(launchIntent)
             }
         }
@@ -95,6 +93,7 @@ class QuickTileService : TileService() {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             info.importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_CACHED
         } else {
+            @Suppress("DEPRECATION")
             info.importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_BACKGROUND
         }
     }

@@ -5,30 +5,25 @@ allprojects {
     }
 }
 
-rootProject.buildDir = '../build'
+rootProject.layout.buildDirectory = file('../build')
 subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    project.layout.buildDirectory = rootProject.layout.buildDirectory.dir(project.name)
 }
 
 // temporary fix to keep using device_apps
 // https://stackoverflow.com/questions/69033022/message-error-resource-androidattr-lstar-not-found
 subprojects {
     afterEvaluate { project ->
-        if (project.plugins.hasPlugin("com.android.application") ||
-                project.plugins.hasPlugin("com.android.library")) {
+        if (project.plugins.hasPlugin('com.android.application') ||
+                project.plugins.hasPlugin('com.android.library')) {
             project.android {
-                compileSdkVersion 34
-                buildToolsVersion "34.0.0"
+                compileSdkVersion 37
+                buildToolsVersion '37.0.0'
             }
         }
     }
 }
 
-
 subprojects {
     project.evaluationDependsOn(':app')
-}
-
-tasks.register("clean", Delete) {
-    delete rootProject.buildDir
 }

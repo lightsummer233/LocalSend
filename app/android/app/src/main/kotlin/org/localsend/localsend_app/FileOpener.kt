@@ -2,12 +2,11 @@ package org.localsend.localsend_app
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import android.provider.DocumentsContract
+import androidx.core.net.toUri
 import java.util.Locale
 
 fun openUri(context: Context, uriStr: String) {
-    val uri = Uri.parse(uriStr)
+    val uri = uriStr.toUri()
     val intent = Intent(Intent.ACTION_VIEW, uri)
     val type = getFileType(uriStr)
 
@@ -88,6 +87,6 @@ private fun getFileType(filePath: String): String {
         "xml" -> "text/plain"
         "z" -> "application/x-compress"
         "zip" -> "application/x-zip-compressed"
-        else -> DocumentsContract.Document.MIME_TYPE_DIR
+        else -> "application/octet-stream"
     }
 }
