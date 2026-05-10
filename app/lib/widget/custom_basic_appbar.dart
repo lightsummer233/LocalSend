@@ -71,5 +71,8 @@ PreferredSizeWidget basicLocalSendAppbar(String title) {
             ),
           ),
         )
-      : AppBar(title: Text(title));
+      : AppBar(
+          title: Text(title),
+          centerTitle: true,
+        );
 }
